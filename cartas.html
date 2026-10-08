@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Elige una carta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="volver" href="index.html">&larr; Volver</a>
+
+  <div class="pagina">
+    <h1 class="titulo">Elige una carta, mi amor</h1>
+    <p class="subtitulo">Cada una guarda algo hecho para ti</p>
+
+    <div class="cartas">
+      <div class="carta-wrap">
+        <div class="carta" role="button" tabindex="0" data-url="recuerdos.html" aria-label="Recuerdos juntos">
+          <div class="carta__tapa">
+            <div class="carta__cara carta__cara--frente">
+              <span class="carta__icono">&#9829;</span>
+            </div>
+            <div class="carta__cara carta__cara--trasera">
+              <span class="carta__numero">1</span>
+            </div>
+          </div>
+          <div class="carta__interior">
+            <p class="carta__mensaje">Preciosos momentos<br>a tu lado</p>
+          </div>
+        </div>
+        <span class="carta__pie">Recuerdos juntos</span>
+      </div>
+
+      <div class="carta-wrap">
+        <div class="carta" role="button" tabindex="0" data-url="carta.html" aria-label="Una carta para ti">
+          <div class="carta__tapa">
+            <div class="carta__cara carta__cara--frente">
+              <span class="carta__icono">&#9829;</span>
+            </div>
+            <div class="carta__cara carta__cara--trasera">
+              <span class="carta__numero">2</span>
+            </div>
+          </div>
+          <div class="carta__interior">
+            <p class="carta__mensaje">Palabras s&oacute;lo<br>para ti</p>
+          </div>
+        </div>
+        <span class="carta__pie">Una carta para ti</span>
+      </div>
+
+      <div class="carta-wrap">
+        <div class="carta" role="button" tabindex="0" data-url="musica.html" aria-label="Nuestra m&uacute;sica">
+          <div class="carta__tapa">
+            <div class="carta__cara carta__cara--frente">
+              <span class="carta__icono">&#9829;</span>
+            </div>
+            <div class="carta__cara carta__cara--trasera">
+              <span class="carta__numero">3</span>
+            </div>
+          </div>
+          <div class="carta__interior">
+            <p class="carta__mensaje">Canciones<br>para ti</p>
+          </div>
+        </div>
+        <span class="carta__pie">Nuestra m&uacute;sica</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/corazones.js"></script>
+  <script src="js/cartas.js"></script>
+</body>
+</html>

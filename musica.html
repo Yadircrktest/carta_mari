@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Nuestra m&uacute;sica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Dancing+Script:wght@500;600;700&family=Great+Vibes&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/reproductor.css">
+</head>
+<body>
+  <a class="volver" href="cartas.html">&larr; Volver</a>
+
+  <div class="pagina">
+    <h1 class="titulo">Nuestra m&uacute;sica</h1>
+    <p class="subtitulo">Canciones que me hacen pensar en ti</p>
+
+    <div class="reproductor">
+      <div class="reproductor__arte">
+        <div id="ytPlayer" class="yt-reproductor"></div>
+      </div>
+
+      <div class="reproductor__info">
+        <h2 id="tituloCancion">Cargando…</h2>
+        <p id="autorCancion"></p>
+      </div>
+
+      <div class="reproductor__progreso">
+        <span id="tiempoActual">0:00</span>
+        <input type="range" id="barra" min="0" max="100" value="0" step="0.1" aria-label="Progreso">
+        <span id="tiempoTotal">0:00</span>
+      </div>
+
+      <div class="reproductor__controles">
+        <button type="button" class="reproductor__btn" id="btnAnterior" aria-label="Anterior">&#9198;</button>
+        <button type="button" class="reproductor__btn reproductor__btn--play" id="btnPlay" aria-label="Reproducir">&#9654;</button>
+        <button type="button" class="reproductor__btn" id="btnSiguiente" aria-label="Siguiente">&#9197;</button>
+        <button type="button" class="reproductor__btn reproductor__btn--aleatorio" id="btnAleatorio" aria-label="Aleatorio">&#128257;</button>
+      </div>
+
+      <ul class="reproductor__lista" id="lista"></ul>
+
+      <p class="reproductor__error" id="errorMsg" hidden></p>
+      <a class="reproductor__enlace" href="https://music.youtube.com/playlist?list=PLKZDcwltxBWU" target="_blank" rel="noopener">Abrir la playlist en YouTube Music &#8599;</a>
+    </div>
+  </div>
+
+  <script src="js/corazones.js"></script>
+  <script src="js/musica.js"></script>
+</body>
+</html>

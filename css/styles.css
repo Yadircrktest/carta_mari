@@ -1,0 +1,332 @@
+:root{
+  --rojo:#DE0F2D;
+  --rosa:#FFD1DC;
+  --rosa-palido:#FFE1EA;
+  --crema:#FFF9F2;
+  --tinta:#7A0E1F;
+  --sombra:0 14px 40px rgba(0,0,0,.25);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html,body{height:100%}
+
+body{
+  font-family:'Caveat','Segoe Script','Brush Script MT',cursive,sans-serif;
+  background:var(--rojo);
+  color:#fff;
+  min-height:100vh;
+  min-height:100dvh;
+  overflow-x:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+
+body>*{position:relative;z-index:2}
+
+/* ---------- corazones cayendo ---------- */
+.capa-corazones{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:1;
+}
+.corazon{
+  position:absolute;
+  top:-40px;
+  color:var(--rosa-palido);
+  animation-name:caer;
+  animation-timing-function:linear;
+  animation-fill-mode:forwards;
+  user-select:none;
+  text-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+@keyframes caer{
+  0%{transform:translate3d(0,-8vh,0) rotate(0deg)}
+  25%{transform:translate3d(26px,24vh,0) rotate(80deg)}
+  50%{transform:translate3d(-20px,52vh,0) rotate(170deg)}
+  75%{transform:translate3d(22px,80vh,0) rotate(260deg)}
+  100%{transform:translate3d(-14px,112vh,0) rotate(355deg)}
+}
+
+/* ---------- tipografia / botones comunes ---------- */
+.pagina{
+  width:100%;
+  max-width:1000px;
+  margin:0 auto;
+  padding:70px 16px 40px;
+  min-height:100vh;
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(16px,3vh,26px);
+  text-align:center;
+}
+.titulo{
+  font-family:'Great Vibes','Segoe Script','Brush Script MT',cursive;
+  font-size:clamp(2.3rem,8vw,3.6rem);
+  font-weight:600;
+  line-height:1.05;
+  text-shadow:0 3px 14px rgba(0,0,0,.3),0 0 22px rgba(255,210,220,.25);
+}
+.subtitulo{
+  font-size:clamp(1.05rem,4vw,1.4rem);
+  opacity:.95;
+  text-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.corazon-heroe{
+  width:min(78vw,330px);
+  max-height:45vh;
+  object-fit:contain;
+  border-radius:24px;
+  box-shadow:var(--sombra),0 0 0 6px rgba(255,255,255,.14);
+}
+.botones{
+  display:flex;
+  gap:22px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding-top:4px;
+}
+.btn{
+  font-family:inherit;
+  font-size:1.5rem;
+  min-width:132px;
+  padding:14px 36px;
+  border:2px solid #fff;
+  border-radius:999px;
+  cursor:pointer;
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-touch-callout:none;
+  touch-action:manipulation;
+  box-shadow:0 10px 24px rgba(0,0,0,.22);
+}
+.btn-si{background:#fff;color:var(--rojo);font-weight:700}
+.btn-si:active{transform:scale(.95)}
+.btn-no{
+  position:relative;
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  touch-action:none;
+  transition:left .18s ease-out,top .18s ease-out;
+  will-change:left,top;
+}
+.btn-no:active{transform:scale(.97)}
+
+.volver{
+  position:fixed;
+  top:14px;
+  left:14px;
+  z-index:20;
+  color:#fff;
+  text-decoration:none;
+  background:rgba(0,0,0,.18);
+  border:1px solid rgba(255,255,255,.4);
+  padding:7px 16px;
+  border-radius:999px;
+  font-size:1.05rem;
+  box-shadow:0 4px 12px rgba(0,0,0,.18);
+}
+
+/* ---------- pagina de cartas ---------- */
+.cartas{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));
+  gap:clamp(60px,10vw,110px);
+  width:100%;
+  max-width:880px;
+  margin:auto;
+  padding:0 18px;
+}
+.carta-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+.carta{
+  position:relative;
+  width:100%;
+  max-width:250px;
+  aspect-ratio:5/7;
+  perspective:1300px;
+  cursor:pointer;
+  outline:none;
+}
+.carta:focus-visible{border-radius:16px;box-shadow:0 0 0 3px #fff}
+.carta__tapa{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  transform-style:preserve-3d;
+  transform-origin:left center;
+  transition:transform .75s cubic-bezier(.4,.1,.2,1);
+}
+.carta.abierta .carta__tapa,
+.carta:hover .carta__tapa{transform:rotateY(-110deg)}
+.carta__cara{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:16px;
+  box-shadow:var(--sombra);
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+}
+.carta__cara--frente{
+  background:linear-gradient(160deg,var(--crema) 0%,#ffe2ec 100%);
+  transform:rotateY(0deg);
+  color:var(--rojo);
+}
+.carta__cara--trasera{
+  background:linear-gradient(160deg,#fff 0%,var(--rosa) 100%);
+  transform:rotateY(180deg);
+  color:var(--rojo);
+}
+.carta__icono{
+  font-size:clamp(2.6rem,10vw,3.4rem);
+  line-height:1;
+  text-shadow:0 3px 8px rgba(214,20,55,.25);
+}
+.carta__numero{
+  font-family:'Great Vibes','Segoe Script',cursive;
+  font-size:clamp(2.8rem,11vw,4rem);
+  line-height:1;
+}
+.carta__interior{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding:20px;
+  border-radius:16px;
+  background:linear-gradient(160deg,#ffffff 0%,#ffeef4 100%);
+  color:var(--tinta);
+  box-shadow:var(--sombra);
+}
+.carta__interior>*{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.carta.abierta .carta__interior>*,
+.carta:hover .carta__interior>*{
+  opacity:1;
+  transform:none;
+  transition-delay:.35s;
+}
+.carta__mensaje{font-size:1.4rem;line-height:1.25}
+.carta__pie{
+  font-size:1.15rem;
+  background:rgba(0,0,0,.16);
+  border:1px solid rgba(255,255,255,.35);
+  padding:5px 18px;
+  border-radius:999px;
+  text-shadow:0 1px 4px rgba(0,0,0,.2);
+}
+
+/* ---------- collage ---------- */
+.collage{width:100%;columns:2 170px;column-gap:14px;margin:auto;padding:0 14px 40px}
+.recuerdo{
+  display:inline-block;
+  width:100%;
+  margin-bottom:14px;
+  break-inside:avoid;
+  background:#fff;
+  padding:8px 8px 12px;
+  border-radius:6px;
+  box-shadow:0 10px 24px rgba(0,0,0,.28);
+  transform:rotate(var(--rot,0deg));
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.recuerdo img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:4px;
+}
+.recuerdo:nth-child(3n){--rot:-2deg}
+.recuerdo:nth-child(3n+1){--rot:2.4deg}
+.recuerdo:nth-child(3n+2){--rot:-1.4deg}
+.recuerdo:hover{
+  transform:rotate(0deg) scale(1.04);
+  box-shadow:0 18px 40px rgba(0,0,0,.4);
+}
+.recuerdo:focus-visible{outline:2px solid #fff}
+
+/* ---------- carta escrita ---------- */
+.carta-letra{
+  width:min(94vw,660px);
+  margin:0 auto;
+  background:#fffdf6;
+  color:var(--tinta);
+  border-radius:14px;
+  box-shadow:var(--sombra),0 0 0 1px rgba(122,14,31,.12);
+  padding:clamp(30px,7vw,56px);
+  font-family:'Dancing Script','Segoe Script','Brush Script MT',cursive;
+  font-size:clamp(1.25rem,4.6vw,1.5rem);
+  line-height:1.6;
+  text-align:left;
+}
+.carta-letra p{margin-bottom:1.05em}
+.carta-letra__capital::first-letter{
+  font-family:'Pinyon Script','Segoe Script','Brush Script MT',cursive;
+  float:left;
+  font-size:3.4em;
+  line-height:.8;
+  padding-right:.08em;
+  margin-top:.05em;
+  color:var(--rojo);
+}
+.carta-letra__foto{
+  margin:1.2em auto .4em;
+  text-align:center;
+}
+.carta-letra__foto img{
+  width:min(88%,340px);
+  height:auto;
+  border-radius:12px;
+  border:6px solid #fff;
+  box-shadow:0 10px 26px rgba(0,0,0,.25);
+  transform:rotate(-1.2deg);
+}
+.carta-letra__firma{
+  margin-top:1.4em;
+  text-align:right;
+  font-family:'Pinyon Script','Segoe Script','Brush Script MT',cursive;
+  font-size:clamp(1.7rem,6vw,2.3rem);
+  line-height:1.15;
+  color:var(--rojo);
+}
+
+/* ---------- por venir ---------- */
+.sorpresa-icono{
+  font-size:clamp(4rem,18vw,6rem);
+  line-height:1;
+  animation:latido 1.4s ease-in-out infinite;
+  text-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+@keyframes latido{
+  0%,100%{transform:scale(1)}
+  25%{transform:scale(1.12)}
+  45%{transform:scale(1)}
+  55%{transform:scale(1.1)}
+}
+
+@media (min-width:720px){
+  .collage{columns:3 200px}
+}
